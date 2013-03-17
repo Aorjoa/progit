@@ -19,17 +19,17 @@
 
 Git repository ของคุณตอนนี้จะมี 5 objects: blob แต่ละ blob สำหรับ content ของแต่ละ file ใน 3 files นั้น, โครงสร้าง root directory ที่เก็บ list ของสิ่งของในนั้นและบันทึกว่า file ไหนถูกเก็บใส่ blob ไหน และ 1 commit ที่มี pointer อันนึงชี้ไปยังโครงสร้างของ root directory กับพวก metadata ของ commit นั้น ซึ่งหน้าตาของข้อมูลใน Git repository ของคุณก็มีคอนเซปประมาณรูป Figure 3-1.
 
-Insert 18333fig0301.png 
+http://git-scm.com/figures/18333fig0301-tn.png
 Figure 3-1. Single commit repository data.
 
 ถ้าคุณทำการแก้ไขใดๆ แล้ว commit ซ้ำอีกครั้ง commit อันถัดไปจะเก็บในรูป pointer ชี้ไปยัง commit ก่อนหน้า ทำไปอีก 2 commits history ของคุณน่าจะมีหน้าตาประมาณรูป Figure 3-2.
 
-Insert 18333fig0302.png 
+http://git-scm.com/figures/18333fig0302-tn.png
 Figure 3-2. Git object data for multiple commits.
 
-branch อันนึงใน Git เป็นแค่ pointer ฉบับกระเป๋าของ commits เหล่านี้ ชื่อโดย default ของ branch ใน Git คือ master ขณะที่คุณ commit ครั้งแรกส่งกำลังส่ง master branch อันนึงที่ points กลับไปยัง commit ก่อนหน้า ทุกครั้งที่คุณ commit มันก็ค่อยๆขยับไปๆโดยอัตโนมัติ
+branch อันนึงใน Git เป็นแค่ pointer ฉบับกระเป๋าของ commits เหล่านี้ ชื่อโดย default ของ branch ใน Git คือ master ขณะที่คุณ commit ครั้งแรกคุณกำลังส่ง master branch อันนึงที่ points กลับไปยัง commit ก่อนหน้า ทุกครั้งที่คุณ commit มันก็ค่อยๆขยับไปๆโดยอัตโนมัติ
 
-Insert 18333fig0303.png 
+http://git-scm.com/figures/18333fig0303-tn.png
 Figure 3-3. Branch pointing into the commit data’s history.
 
 แล้วจะเกิดอะไรขึ้นถ้าคุณสร้าง branch ใหม่? ก็แค่สร้าง pointer อันใหม่เพื่อที่จะโยกย้ายไปมาตามใจ ยกตัวอย่างว่าคุณสร้าง branch ใหม่ชื่อว่า testing ซึ่งสามารถทำได้ด้วยคำสั่ง `git branch`:
@@ -38,12 +38,12 @@ Figure 3-3. Branch pointing into the commit data’s history.
 
 มันจะสร้าง pointer อันใหม่ใน commit ปัจจุบันที่คุณอยู่ (ดูรูป Figure 3-4).
 
-Insert 18333fig0304.png 
+http://git-scm.com/figures/18333fig0304-tn.png
 Figure 3-4. Multiple branches pointing into the commit’s data history.
 
 แล้ว Git มันรู้ได้ไงว่าตอนนี้คุณอยู่ branch ไหน? เพราะมันแอบจำ pointer พิเศษที่ชื่อว่า HEAD จำไว้ว่า HEAD นี้ต่างกันกับ concept ของ HEAD ใน VCS อื่นๆที่คุณอาจจะเคยใช้มาเยอะมาก (ไม่ว่าจะเป็น Subversion หรือ CVS) ใน Git นี่คือ pointer ชี้ไปยัง local branch ที่คุณทำงานอยู่ อย่างในกรณีนี้ คุณยังอยู่บน master คำสั่ง git branch แค่สร้าง branch ใหม่ให้เฉยๆ มันเปล่า switch คุณไปยัง branch ใหม่นั้นแต่อย่างใด (ดูรูป Figure 3-5).
 
-Insert 18333fig0305.png 
+http://git-scm.com/figures/18333fig0305-tn.png
 Figure 3-5. HEAD file pointing to the branch you’re on.
 
 ถ้าจะ switch ไปยัง branch ใดๆที่มีอยู่ คุณก็แค่สั่ง `git checkout` ลอง switch ไปยัง testing branch อันใหม่กัน:
@@ -52,7 +52,7 @@ Figure 3-5. HEAD file pointing to the branch you’re on.
 
 คำสั่งนี้จะย้าย HEAD ให้ไปชี้ที่ testing branch (ดังรูป Figure 3-6).
 
-Insert 18333fig0306.png
+http://git-scm.com/figures/18333fig0306-tn.png
 Figure 3-6. HEAD points to another branch when you switch branches.
 
 แล้วมันสำคัญยังไงอ่ะ? อ่ะ มาดู commit ถัดมากัน:
@@ -62,7 +62,7 @@ Figure 3-6. HEAD points to another branch when you switch branches.
 
 รูป Figure 3-7 จะโชว์ผลให้ดู
 
-Insert 18333fig0307.png 
+http://git-scm.com/figures/18333fig0307-tn.png 
 Figure 3-7. The branch that HEAD points to moves forward with each commit.
 
 น่าสนใจนะเนี่ย เพราะตอนนี้ testing branch ของคุณขยับไปข้างหน้า แต่ master branch ยังคงชี้ไปยัง commit ที่คุณอยู่ก่อนหน้านี้ตอนที่ switch branch ด้วยคำสั่ง `git checkout` อ่ะ ลอง switch กลับไป master branch กัน:
@@ -71,7 +71,7 @@ Figure 3-7. The branch that HEAD points to moves forward with each commit.
 
 มาดูผลในรูป Figure 3-8
 
-Insert 18333fig0308.png 
+http://git-scm.com/figures/18333fig0308-tn.png
 Figure 3-8. HEAD moves to another branch on a checkout.
 
 คำสั่งนั้นทำสองอย่าง มันขยับ HEAD pointer กลับไปยัง master branch แต่มัน revert file ทั้งหลายใน working directory ของคุณกลับไปยัง snapshot ที่ master ชี้อยู่ ซึ่งหมายความว่าความเปลี่ยนแปลงทั้งหลายที่คุณแก้ไปตั้งแต่จุดนี้ถูกแยกออกไปจาก version เก่าของ project สรุปคือมัน rewind งานที่คุณทำไปบน testing branch กลับมาชั่วคราวเพื่อที่คุณจะได้ลองแก้ไปทางอื่นได้
@@ -81,9 +81,9 @@ Figure 3-8. HEAD moves to another branch on a checkout.
 	$ vim test.rb
 	$ git commit -a -m 'made other changes'
 
-ตอนนี้ project history ของคุณถูกแยกออก (ดู Figure 3-9) คุณสร้าง branch ใหม่และ switch ไป, ทำงานไปบนนั้น, แล้ว switch กลับมาที่ branch หลัก แล้วทำงานอื่นลงไป ความเปลี่ยนแปลงทั้งสองสายถูกตัดขาดจากกันใน branch ทั้งสอง คุณสามารถโดดกลับไปกลับมาระหว่างสอง branches ได้แล้วค่อย merge มันเข้าด้วยกันเมื่อคุณพร้อม ซึ่งทั้งหมดนั่นทำได้ด้วยคำสั่งง่ายอย่าง `branch` และ `checkout`
+ตอนนี้ project history ของคุณถูกแยกออก (ดู Figure 3-9) คุณสร้าง branch ใหม่และ switch ไปทำงานบนนั้น เสร็จแล้ว switch กลับมาที่ branch หลัก แล้วทำงานอื่นลงไป ความเปลี่ยนแปลงทั้งสองสายถูกตัดขาดจากกันใน branch ทั้งสอง คุณสามารถโดดกลับไปกลับมาระหว่างสอง branches ได้แล้วค่อย merge มันเข้าด้วยกันเมื่อคุณพร้อม ซึ่งทั้งหมดนั่นทำได้ด้วยคำสั่งง่ายอย่าง `branch` และ `checkout`
 
-Insert 18333fig0309.png 
+http://git-scm.com/figures/18333fig0309-tn.png
 Figure 3-9. The branch histories have diverged.
 
 เนื่องจาก branch ใน Git จริงๆแล้วเป็นแค่ file ธรรมดาๆที่เก็บตัวหนังสือ 40 อักษรที่เป็น SHA-1 checksum ของ commit ที่มันชี้ไปหา การสร้างหรือทำลาย branch เลยถูกอย่างกะขี้ สร้าง branch ใหม่ทั้งง่ายและเร็วส์ปานการเขียน 41 bytes ลงไปใน file (40 อักษรกะ newline อีกตัว)
@@ -111,7 +111,7 @@ Figure 3-9. The branch histories have diverged.
 
 ก่อนอื่น สมมติว่าคุณกำลังทำงานบน project คุณ และ commit เข้าไปหลายทีละ (ตาม Figure 3-10).
 
-Insert 18333fig0310.png 
+http://git-scm.com/figures/18333fig0310-tn.png
 Figure 3-10. A short and simple commit history.
 
 คุณตัดสินใจว่า เอาล่ะ วันนี้ทำ issue #53 ดีกว่า (ไม่ว่าระบบ issue-tracking ที่บริษัทคุณใช้จะเป็นอะไร) เอาจริงๆแล้ว Git ไม่ได้ผูกติดกับ issue-tracking แต่อย่างใด แต่เนื่องจาก issue #53 มันเป็นเรื่องเป็นราวของมันคุณก็เลยอยากแตก branch แยกออกไปทำ การสร้าง branch ใหม่และ switch ไปในจังหวะเดียวสามารถทำได้ด้วยคำสั่ง `git checkout` แล้วเสริม `-b` เข้าไป:
@@ -126,7 +126,7 @@ Figure 3-10. A short and simple commit history.
 
 รูป 3-11 จะโชว์ผลให้ดู
 
-Insert 18333fig0311.png 
+http://git-scm.com/figures/18333fig0311-tn.png
 Figure 3-11. Creating a new branch pointer.
 
 คุณทำงานไปบน web site ของคุณและ commit ไปนิดหน่อย ซึ่งระหว่างนั้นก็เป็นการผลัก branch `iss53` ไปข้างหน้า เพราะคุณ checkout มันออกมา (แปลว่า HEAD ของคุณชี้ไปหามัน ดังรูป Figure 3-12):
@@ -134,7 +134,7 @@ Figure 3-11. Creating a new branch pointer.
 	$ vim index.html
 	$ git commit -a -m 'added a new footer [issue 53]'
 
-Insert 18333fig0312.png 
+http://git-scm.com/figures/18333fig0312-tn.png
 Figure 3-12. The iss53 branch has moved forward with your work.
 
 แล้วโทรศัพท์ก็มาบอกว่า web site มีงานเข้า และคุณต้องซ่อมมันด่วน เพราะ Git คุณไม่จำเป็นต้อง deploy fix ของคุณไปกับความเปลี่ยนแปลงใน `iss53`  และคุณก็ไม่ต้องเปลืองแรงแก้ code กลับมาเป็นเหมือนเดิม ก่อนที่จะเริ่ม fix อะไรที่อยู่บน production ทั้งหมดที่ต้องทำก็แค่ switch กลับไปยัง master branch
@@ -155,7 +155,7 @@ Figure 3-12. The iss53 branch has moved forward with your work.
 	[hotfix]: created 3a0874c: "fixed the broken email address"
 	 1 files changed, 0 insertions(+), 1 deletions(-)
 
-Insert 18333fig0313.png 
+http://git-scm.com/figures/18333fig0313-tn.png
 Figure 3-13. hotfix branch based back at your master branch point.
 
 คุณสามารถ run tests เพื่อให้มั่นใจว่า hotfix มันทำงานได้ดั่งใจและ merge มันกลับเข้า master branch เพื่อ deploy ใส่ production ซึ่งสามารถทำได้ด้วยคำสั่ง `git merge`:
@@ -171,7 +171,7 @@ Figure 3-13. hotfix branch based back at your master branch point.
 
 ความเปลี่ยนแปลงของคุณตอนนี้อยู่ใน snapshot ของ commit ที่ `master` branch ชี้ไป และคุณก็สามารถ deploy ความเปลี่ยนแปลงนี้ได้ (ดัง Figure 3-14).
 
-Insert 18333fig0314.png 
+http://git-scm.com/figures/18333fig0314-tn.png
 Figure 3-14. Your master branch points to the same place as your hotfix branch after the merge.
 
 หลังจาก fix ที่โคตรสำคัญถูก deployed คุณก็พร้อมที่จะ switch กลับไปยังงานที่คุณทำค้างไว้ก่อนถูกขัดจังหวะ อย่างไรก็ตาม สิ่งที่คุณจะทำก่อนคือการ delete branch `hotfix` เพราะว่าคุณไม่ต้องใช้มันอีกแล้ว เพราะไอ้ `master` branch มันชี้ไปที่จุดเดียวกันแล้ว คุณสามารถ delete มันด้วย option `-d` ของ `git branch`:
@@ -188,14 +188,14 @@ Figure 3-14. Your master branch points to the same place as your hotfix branch a
 	[iss53]: created ad82d7a: "finished the new footer [issue 53]"
 	 1 files changed, 1 insertions(+), 0 deletions(-)
 
-Insert 18333fig0315.png 
+http://git-scm.com/figures/18333fig0315-tn.png
 Figure 3-15. Your iss53 branch can move forward independently.
 
 ถึงงานที่ทำไว้ใน `hotfix` branch จะไม่อยู่ใน files ใน `iss53` branch ก็ช่างหัวมัน ถ้าต้องดึงมันเข้ามา คุณก็สามารถ merge `master` branch ของคุณใส่ใน `iss53` branch ได้ด้วยคำสั่ง `git merge master` หรือว่าจะรอ integrate ความเปลี่ยนแปลงพวกนั้นตอนจะรวม `iss53` branch กลับเข้า `master` ทีหลังก็ได้
 
 ### เบสิคการ Merge ###
 
-สมมติว่าคุณมั่นแล้วว่า issue #53 นี่เนียนแล้วและพร้อมที่จะ merge มันเข้า `master` branch คุณก็ merge branch `iss53` (เหมือนกะตอนที่ทำ branch `hotfix` ก่อนหน้าอ่ะแหละ) ที่ต้องทำทั้งหมดก็แค่ check out branch ที่อยากจะ merge เข้าไปใส่ และสั่ง command `git merge`:
+สมมติว่าคุณมั่นใจแล้วว่า issue #53 นี่เนียนแล้วและพร้อมที่จะ merge มันเข้า `master` branch คุณก็ merge branch `iss53` (เหมือนกะตอนที่ทำ branch `hotfix` ก่อนหน้าอ่ะแหละ) ที่ต้องทำทั้งหมดก็แค่ check out branch ที่อยากจะ merge เข้าไปใส่ และสั่ง command `git merge`:
 
 	$ git checkout master
 	$ git merge iss53
@@ -205,14 +205,14 @@ Figure 3-15. Your iss53 branch can move forward independently.
 
 อันนี้อาจจะดูต่างกะตอน merge `hotfix` ก่อนหน้านิดส์นึง เพราะครั้งนี้ history การเปลี่ยนแปลงมันถูกแยกออกไปจากจุดก่อนหน้า นั่นเพราะว่า commit ของ branch ที่คุณกะลังอยู่ไม่ได้เป็นรากเหง้าโดยตรงของ branch ที่กำลังจะ merge เข้ามา Git เลยต้องออกแรง อย่างในกรณีนี้ Git ก็ทำ การ merge 3 ทางง่ายๆ โดยใช้ 2 snapshots ที่อยู่ที่ปลายทั้ง 2 ข้างของแต่ละ branch และรากเหง้าของทั้งสองที่เหมือนกัน Figure 3-16 จะ highlight 3 snapshots ที่ Git ใช้ในการ merge กรณีนี้ให้ดู
 
-Insert 18333fig0316.png 
+http://git-scm.com/figures/18333fig0316-tn.png
 Figure 3-16. Git automatically identifies the best common-ancestor merge base for branch merging.
 
 แทนที่จะแค่ขยับ pointer ของ branch ไปข้างหน้า Git สร้าง snapshot อันที่ที่เป็นผลจากการ merge 3 ทางนี้ และสร้าง commit อันใหม่ที่ชี้ไปยัง snapshot นั้นโดยอัตโนมัติ (see Figure 3-17) ปรกติเราเรียกท่านี้ว่า merge commit และความพิเศษของมันคือ มันมีแม่มากกว่า 1 อัน
 
 อย่างนึงที่อยากจะอวดคือ Git ไปคุ้ยหารากเหง้าที่ซ้ำกันของทั้งสองกิ่งให้เพื่อที่จะใช้เป็น merge base ซึ่ง CVS อื่นหรือ Subversion (ก่อน version 1.5) ไม่มีปัญญา และ developer ที่จะ merge ต้องไปคุ้ยเองว่า merge base ที่ดีที่สุดคืออันไหน ด้วยเหตุนี้การ merge ใน Git ก็เลยง่ายกว่าระบบอื่นๆมว้ากกกส์
 
-Insert 18333fig0317.png 
+http://git-scm.com/figures/18333fig0317-tn.png
 Figure 3-17. Git automatically creates a new commit object that contains the merged work.
 
 เอาล่ะ หลังจากงานคุณถูก merge เข้าไปเรียบร้อยแล้ว คุณก็ไม่จำเป็นต้องเลี้ยง branch `iss53` ให้เสียข้าวสุก ลบแม่มเลย แล้วก็ไปปิด ticket ในระบบ ticket-tracking
