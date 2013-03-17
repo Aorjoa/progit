@@ -1,6 +1,6 @@
 # การแตก branch ใน Git #
 
-เกือบทุก VCS support การแตก branch ทางใดซักทางหนึ่ง การแตก Branch หมายถึงคุณแยกตัวออกมาจาก main line ของการพัฒนาและทำนต่อไปบนบนนั้นโดยไม่ไปยุ่งเกี่ยวกับ main line ในหลายๆ VCS การทำแบบนี้ค่อนข้างจะเปลือง ส่วนใหญ่จะเป็นการ copy ทั้ง directory ของ source code ซึ่งจะกินเวลานานมว๊ากกบน project ใหญ่ๆ
+เกือบทุก VCS support การแตก branch ทางใดซักทางหนึ่ง การแตก Branch หมายถึงคุณแยกตัวออกมาจาก main line ของการพัฒนาและทำงานต่อไปบนนั้นโดยไม่ไปยุ่งเกี่ยวกับ main line ในหลายๆ VCS การทำแบบนี้ค่อนข้างจะสิ้นเปลือง ส่วนใหญ่จะเป็นการ copy ทั้ง directory ของ source code ซึ่งจะกินเวลานานมว๊ากกบน project ใหญ่ๆ
 
 หลายคนเรียกการแตก branch ใน Git เป็น “killer feature” และมันทำให้ Git โดดเด่นออกมาจาก VCS อื่นๆ ทำไมน่ะเหรอ? เพราะวิธีที่ Git แตก branch มันถูกโคตร การแตก branch ทำได้ในชั่วพริบตาและการ switch ไปๆมาๆระหว่าง branch ก็เร็วพอๆกัน ไม่เหมือน VCS ดาษๆทั่วไป Git ผลักดันกระบวนการทำงาน workflow ให้แตก branch และ merge บ่อยๆแบบที่ทำได้วันละหลายๆครั้ง การทำความเข้าใจและบรรลุ feature นี้จะทำให้ Git กลายเป็นเครื่องมือที่ทรงพลังและมีเอกลักษณ์และทำให้วิถีการทำงานของคุณเปลี่ยนไปเลย
 
@@ -10,7 +10,7 @@
 
 เวลาคุณ commit ใน Git นั้น Git จะเก็บเป็น object ของการ commit ซึ่งประกอบด้วย pointer ชี้ไปยัง snapshot ของ content ที่คุณ stage ไว้, metadata ของชื่อผู้แก้ไขและ message ที่บันทึกไว้ และ pointer ที่ชี้ไปยัง parent ลำดับถัดไปของ commit นั้นๆ (ซึ่งอาจจะไม่มีก็ได้ถ้าเป็น commit ครั้งแรก, อาจจะมีอันเดียวชี้ไปยัง parent ของ commit ปรกติทั่วไปหรืออาจจะมี parent หลายอันสำหรับ commit ที่เป็นผลจากการ merge หลายๆ branch เข้าด้วยกัน)
 
-ลองจินตนาการว่าคุณมี directory อันนึงที่มี file อยู่ข้างใน 3 files แล้วคุณก็ stage ทั้งหมดและ commit การ stage file จะสร้าง checksum ของแต่ละ file (ไอ้ SHA-1 hash ที่บอกไว้ใน Chapter 1 นั่นแหละ), แล้วบันทึก version ของ file นั้นๆใน Git repository (Git อ้างอิงพวกมันแบบ blobs) และเพิ่ม checksum นั้นลงไปใน staging area:
+ลองจินตนาการว่าคุณมี directory อันนึงที่มี file อยู่ข้างใน 3 files แล้วคุณก็ stage ทั้งหมดและ commit การ stage file จะสร้าง checksum ของแต่ละ file (ไอ้ SHA-1 hash ที่บอกไว้ใน Chapter 1 นั่นแหละ) แล้วบันทึก version ของ file นั้นๆใน Git repository (Git อ้างอิงพวกมันแบบ blobs) และเพิ่ม checksum นั้นลงไปใน staging area:
 
 	$ git add README test.rb LICENSE
 	$ git commit -m 'initial commit of my project'
