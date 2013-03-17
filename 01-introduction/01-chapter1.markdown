@@ -19,7 +19,7 @@ Figure 1-1. Local version control diagram.
 ในกรณีที่เราต้องการทำงานร่วมกับคนอื่นๆแล้วเราจะแบ่งปันโค้ดเทพของกันและกันได้อย่างไรนี่ไอ้ของแบบ Local Repo คงไม่เหมาะเท่าไหร่ ดังนั้นของใหม่ที่เกิดถัดมาคือ Centralized Version Control System (CVCSs) และตัวอย่างของระบบแบบนี้คือ CVS, Subversion และ Perforce นั่นเองซึ่งหัวใจหลักของการทำงานแบบนี้คือจะต้องมี server หนึ่งตัวที่รับหน้าที่เก็บของให้ทั้งหมด ทั้งไฟล์ที่เกิดการเปลี่ยนแปลงและจำนวน user ที่ check out ไฟล์จาก server และอย่างที่เรารู้ว่า Centralize Repo เป็นมาตรฐานของ VCS มานานหลายปี (ดู Figure 1-2).
 
 
-http://git-scm.com/figures/18333fig0102.png 
+http://git-scm.com/figures/18333fig0102-tn.png
 Figure 1-2. Centralized version control diagram.
 
 สำหรับการ setup ระบบแบบ Centralize เองก็มีข้อดีหลายอย่างมากที่ดีกว่า local VCSs ยกตัวอย่างเช่นทุกๆคนในทีมจะรู้ว่าคนอื่นๆในทีมที่เหลือกำลังทำอะไรอยู่ ส่วนผู้ที่ดูแลระบบก็สามารถจัดการกับสิทธิ์การทำงานของ user ทุกคนได้ซึ่งนี้ก็เป็นข้อดีที่เหนือกว่าการมานั่งกำหนดอะไรอะไรที่ local database ทีละเครื่องมากมายนัก
@@ -31,7 +31,7 @@ Figure 1-2. Centralized version control diagram.
 
 หลังจากที่เราเห็นด้านมืดของ Centralize Repo ไปแล้วเราก็จะได้รู้จักกับสิ่งที่เรียกว่า Distributed Version Control system (DVCSs) ตัวอย่างของระบบแบบนี้คือ (Git, Mercurial, Bazaar หรือ Darcs) โดยที่ความแปลกของระบบแบบนี้คือแทนที่เครื่อง client จะทำการ check out เอา snapshot ล่าสุดไปไว้บนเครื่องมันจะทำสิ่งที่ยิ่งใหญ่กว่านั้นคือมันทำ full mirror ข้อมูลทั้งหมดของโปรเจคที่กำลังทำงานลงมาไว้ที่เครื่องเลยดังนั้นการทำงานแบบนี้จะแก้ปัญหาเรื่อง Server พังแล้วไม่สามารถย้อนกลับไปเอา history กลับคืนมาได้เพราะข้อมูลที่อยู่บนเครื่อง client ก็สามารถถูกส่งกลับขึ้นไปเพื่อ restore ระบบได้ทั้งหมดเหมือนกันดังนั้นการ check out ของ DVCS ก็คือการทำ Full Backup นั่นเองดังรูป (see Figure 1-3)
 
-http://git-scm.com/figures/18333fig0103.png 
+http://git-scm.com/figures/18333fig0103-tn.png
 Figure 1-3. Distributed version control diagram.
 
 นอกจากนี้แล้วระบบแบบนี้ยังถูกออกแบบให้มีความสามารถในการทำงานกับ remote repository ได้มากกว่าหนึ่งที่ด้วยนั่นหมายความว่าเราสามารถทำงานแจมกับพรรคพวกได้มากกว่าหนึ่งที่ในโปรเจคเดียวกัน ดังนั้นเราจะสามารถ setup workflow ได้หลายประเภทเพื่อให้รองรับการทำงานของเราและสิ่งนี้ทำไม่ได้ใน Centralize Repository นะจ๊ะย้ำ
@@ -58,12 +58,12 @@ Figure 1-3. Distributed version control diagram.
 
 หลักๆเลย Git ต่างกับ VCS อื่นๆ (Subversion และเพื่อนๆ) ตรงที่วิธีที่ Git มองข้อมูลที่มันเก็บ โดยคอนเซปแล้ว ระบบอื่นๆจะเก็บข้อมูลในรูปของ listของความเปลี่ยนแปลง ระบบเหล่านี้ (CVS, Subversion, Perforce, Bazaar ฯลฯ) คิดว่าข้อมูลที่มันเก็บคือ set ของ files และความเปลี่ยนแปลงที่เกิดขึ้นกับแต่ละ file ในเวลาที่ดำเนินไป ดังเช่นตัวอย่างในรูป Figure 1-4.
 
-http://git-scm.com/figures/18333fig0104.png 
+http://git-scm.com/figures/18333fig0104-tn.png 
 Figure 1-4. Other systems tend to store data as changes to a base version of each file.
 
 Git ไม่ได้มองหรือจำข้อมูลที่มันเก็บอย่างนั้น ในทางกลับกัน Git มองข้อมูลมันเหมือนกับเป็น set ของ snapshots ของ filesystem ขนาดจิ๋ว ทุกๆครั้งที่คุณ commit หรือ save project ใน Git มันจะถ่ายรูปว่า files ของเราหน้าตาเป็นไง ณ บัดนั้น และเก็บ reference ไปยัง snapshot (รูปถ่าย) นั้น และเพื่อให้มีประสิทธิภาพ ถ้า file ไม่ถูกแก้ไข Git จะไม่จำ file นั้นๆซ้ำ แค่เก็บ link ไปยัง file เก่าที่เหมือนกันเป๊ะๆ ที่มันเคยจำไว้แล้วเฉยๆ Git มองข้อมูลที่มันเก็บเหมือนดังภาพ Figure 1-5. 
 
-http://git-scm.com/figures/18333fig0105.png 
+http://git-scm.com/figures/18333fig0105-tn.png
 Figure 1-5. Git stores data as snapshots of the project over time.
 
 นี่คือความแตกต่างที่สำคัญระหว่าง Git และ VCSs อื่นๆเกือบทั่วโลก มันทำให้ Git ต้องคิดใหม่ ทำใหม่เกือบทุกๆอย่าง ขณะที่ระบบอื่นๆแค่ copy มาจากรุ่นก่อนๆ มันทำให้ Git เหมือนเป็น filesystem ขนาดจิ๋วที่มากับ tools อันทรงพลังที่สร้างขึ้นมาครอบมันมากกว่าที่จะเป็นแค่ VCS ธรรมดา เด๋วเราค่อยมาโชว์ของดีที่ได้จากการมองข้อมูลในลักษณะนี้ในหัวข้อ branching ใน Chapter 3
@@ -102,7 +102,7 @@ Figure 1-5. Git stores data as snapshots of the project over time.
 
 3 state นี้ชักนำให้เกิด 3 ก๊กใน Git project นั่นคือ Git directory, working directory, และ staging area
 
-http://git-scm.com/figures/18333fig0106.png 
+http://git-scm.com/figures/18333fig0106-tn.png 
 Figure 1-6. Working directory, staging area, and git directory.
 
 Git directory คือที่ที่ Git เก็บ metadata และ object database สำหรับ project ของคุณ นี่คือส่วนที่สำคัญที่สุดของ Git และมันคือสิ่งที่ถูก copy มาเวลาที่คุณ clone repository มาจาก computer เครื่องอื่นหรือเริ่มโปรเจกใหม่จาก $git init และจะมาในรูปแบบโฟลเดอร์ .git
@@ -166,7 +166,7 @@ staging area คือ file ธรรมดาไม่ซับซ้อน ซ
 
 	http://code.google.com/p/git-osx-installer
 
-http://git-scm.com/figures/18333fig0107.png 
+http://git-scm.com/figures/18333fig0107-tn.png 
 Figure 1-7. Git OS X installer.
 
 อีกทางคือติดตั้ง Git ผ่าน MacPorts (`http://www.macports.org`) ถ้าลง MacPorts ไว้อยู่แล้ว ก็ติดตั้ง Git ตามนี้
