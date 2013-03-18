@@ -348,12 +348,12 @@ resolution (การซ่อม) อันนี้เอามาจากท
 
 ในชีวิตจริงนั้น ถ้ามาดู pointers ที่ค่อยๆขยับขึ้นตามสายของ commits ของคุณ พวก branches ที่ stable จะอยู่ล่างๆใน commit history และพวก branches ที่เก็บของใหม่ๆแรงๆจะอยู่บนใน history (ดู Figure 3-18).
 
-Insert 18333fig0318.png 
+http://git-scm.com/figures/18333fig0318-tn.png
 Figure 3-18. More stable branches are generally farther down the commit history.
 
 ถ้าจะเปรียบให้ง่าย ก็ลองมองมันเป็นยุ้งข้าวที่เก็บ commits ต่างๆ โดย commit จะค่อยๆถูกขยับไปในยุ้งที่เสถียรขึ้นเมื่อมันถูก tested เรียบร้อย (ดู Figure 3-19).
 
-Insert 18333fig0319.png 
+http://git-scm.com/figures/18333fig0319-tn.png
 Figure 3-19. It may be helpful to think of your branches as silos.
 
 คุณสามารถแยกแบบนี้ซ้ำๆเป็นกี่ระดับความเสถียรก็ได้ สำหรับ projects ใหญ่ๆบาง projects จะมี branch `proposed` หรือ `pu` (proposed updates) ซึ่งเป็น integrated branches ที่ยังไม่พร้อมจะเอาไปลง branch `next` หรือ `master` สรุปแล้ว ไอเดียคือ branches ต่างๆจะถูกแยกให้มีระดับความเสถียรไม่เท่ากัน เมื่อไหร่ที่มันเสถียรขึ้น ก็จะถูก merge ไปยัง branch ระดับที่สูงขึ้น
@@ -367,12 +367,12 @@ Figure 3-19. It may be helpful to think of your branches as silos.
 
 ลองจินตนาการว่าคุณกำลังทำงาน (บน `master`), แล้วแตก branch ออกไปสำหรับ issue ซักอัน (สมมติชื่อ `iss91`) แล้วก็ทำงานบนนั้นไปซักแป๊ปแล้วแตก branch ออกไปอีกอันเพื่อลองแก้ปัญหาเดิมด้วยวิธีใหม่ (ชื่อ `iss91v2`) แล้วกลับไปที่ master branch และทำงานบนนั้นไปซักแป๊ปแล้วแตก branch ออกไปเพื่อลองไอเดียอะไรซักอย่างที่ไม่รู้ว่าเจ๋งป่าว (ชื่อ branch `dumbidea`) ตอนนี้ commit history ของคุณจะมีหน้าตาประมาณรูป Figure 3-20.
 
-Insert 18333fig0320.png 
+http://git-scm.com/figures/18333fig0320-tn.png
 Figure 3-20. Your commit history with multiple topic branches.
 
 ทีนี้, สมมติวันคุณตัดสินใจละ ว่าคุณชอบวิธีที่สองที่คุณทำสำหรับ issue มากกว่า (`iss91v2`) แล้วคุณก็โชว์ branch `dumbidea` ให้เพื่อนดูแล้วผลปรากฏว่ามันแหล่มมาก คุณก็สามารถโยนไอ้ branch `iss91` อันแรกทิ้ง (ทำให้ commits C5 and C6 หายไป) และ merge อีกสองอันเข้ามา ทำให้ history หน้าตาเหมือนรูป Figure 3-21.
 
-Insert 18333fig0321.png 
+http://git-scm.com/figures/18333fig0321-tn.png
 Figure 3-21. Your history after merging in dumbidea and iss91v2.
 
 ประเด็นสำคัญอันหนึ่งที่อยากจะเน้นคือขณะที่คุณทำไอ้ทุกอย่างที่เล่ามา branches เหล่านี้อยู่บน local ทั้งนั้น ไม่ว่าจะเป็นตอน branch ตอน merging ทุกอย่างเกิดขึ้นบน Git repository ของคุณเท่านั้น (ไม่มีการติดต่อกับ server เลยนะ)
@@ -381,31 +381,31 @@ Figure 3-21. Your history after merging in dumbidea and iss91v2.
 
 Remote branches คือคำที่ใช้อ้างถึงสถานะของ branches ที่ remote repositories พวกมันคือ local branches ที่คุณย้ายที่มันไม่ได้เพราะมันจะย้ายเองโดยอัตโนมัติเมื่อคุณติดต่อกับ any network พวก Remote branches จะทำตัวเหมือน bookmarks ที่คอยเตือนว่า branches ทั้งหลายบน remote repositories อยู่ตรงไหนตอนที่คุณ connected กับ remote ครั้งสุดท้าย
 
-รูปแบบพวกมันคือ `(remote)/(branch)` ตัวอย่างเช่น ถ้าคุณอยากเห็นว่า branch `master` เมื่อครั้งสุดท้ายเมื่อคุณติดต่อกับ `origin` remote หน้าตาเป็นยังไง คุณก็ดูได้ที่ branch `origin/master` ถ้าคุณกำลังทำซัก issue นึงกับเพื่อนๆแล้วเพื่อน push branch ที่ชื่อ `iss53` ขึ้นมา (คุณอาจจะมี local `iss53` branch อยู่แล้ว แต่ branch บน server จะชี้ไปยัง commit ที่ `origin/iss53`)
+รูปแบบพวกมันคือ `(remote)/(branch)` ตัวอย่างเช่น ถ้าคุณอยากเห็นว่า branch `master` เมื่อครั้งสุดท้ายที่คุณติดต่อกับ `origin` remote หน้าตาเป็นยังไง คุณก็ดูได้ที่ branch `origin/master` ถ้าคุณกำลังทำซัก issue นึงกับเพื่อนๆแล้วเพื่อน push branch ที่ชื่อ `iss53` ขึ้นมา (คุณอาจจะมี local `iss53` branch อยู่แล้ว แต่ branch บน server จะชี้ไปยัง commit ที่ `origin/iss53`)
 
 ฟังแล้วอาจจะยังงงๆ มาดูตัวอย่างกันดีกว่า สมมติว่าคุณมี Git server อยู่ใน network ของคุณชื่อ `git.ourcompany.com` ถ้าคุณ clone จากที่นี่ Git จะตั้งชื่อมันว่า `origin` ให้คุณโดยอัตโนมัติ, ดึงข้อมูลทั้งหมดของมันลงมา, แล้วสร้าง pointer ไปยัง `master` branch ของมัน, แล้วตั้งชื่อว่า `origin/master` บนเครื่องของคุณ โดยที่คุณจะไม่สามารถย้ายที่มันได้ นอกจากนี้ Git ก็จะให้ `master` branch ส่วนตัวกับคุณ โดยมันจะเริ่มต้นจากที่เดียวกับ `master` branch ของ  origin เพื่อเป็นจุดเริ่มต้นในการทำงานให้กับคุณ (ดู Figure 3-22).
 
-Insert 18333fig0322.png 
+http://git-scm.com/figures/18333fig0322-tn.png 
 Figure 3-22. A Git clone gives you your own master branch and origin/master pointing to origin’s master branch.
 
 ถ้าคุณทำงานอะไรซักอย่างไปบน master branch บนเครื่องคุณ โดยระหว่างนั้นมีใครซักคน push ของใส่ `git.ourcompany.com` และ update master branch บนนั้น histories ของคุณก็ยังค่อยๆขยับไปข้างหน้าตามเรื่องตามราวของมัน ตราบใดที่คุณยังไม่ติดต่อกับ origin server ไอ้ pointer `origin/master` ของคุณก็จะไม่ขยับไปไหน (ดู Figure 3-23).
 
-Insert 18333fig0323.png 
+http://git-scm.com/figures/18333fig0323-tn.png 
 Figure 3-23. Working locally and having someone push to your remote server makes each history move forward differently.
 
 เพื่อที่จะ synchronize งานที่คุณทำ คุณก็จะ run command `git fetch origin` โดย command นี้จะไปหาว่า server origin อยู่ไหน (ในกรณีนี้คือ `git.ourcompany.com`) แล้ว fetches ข้อมูลทั้งหมดที่คุณยังไม่มีจากมัน, updates database บนเครื่องคุณ, ขยับ pointer `origin/master` ไปยังที่ใหม่ที่ up-to-date กว่าเดิม (ดู Figure 3-24).
 
-Insert 18333fig0324.png 
+http://git-scm.com/figures/18333fig0324-tn.png 
 Figure 3-24. The git fetch command updates your remote references.
 
 เพื่อจะทำให้เห็นภาพการมี remote servers หลายๆอันและดูว่า remote branches สำหรับ remote projects เหล่านั้นหน้าตาเป็นยังไง, มาลองสมมติกันว่าคุณมี Git server อีกอันนึงที่อีก sprint team นึงใช้ develop โดยเฉพาะ server อันนี้อยู่ที่ `git.team1.ourcompany.com` คุณสามารถเพิ่มมันเข้าไปเป็น remote reference อันใหม่ของ project ที่คุณกำลังทำงานอยู่โดยการ run command `git remote add` อย่างที่เราเคยเล่าไว้ใน Chapter 2 ตั้งชื่อ remote นี้ว่า `teamone` ซึ่งจะกลายเป็นชื่อย่อสำหรับ URL อันนั้นทั้งอัน (ดู Figure 3-25).
 
-Insert 18333fig0325.png 
+http://git-scm.com/figures/18333fig0325-tn.png
 Figure 3-25. Adding another server as a remote.
 
 ตอนนี้คุณสามารถ run `git fetch teamone` เพื่อ fetch ทุกอย่างที่ remote `teamone` server มีแต่คุณยังไม่มี เนื่องจาก server นั้นเป็นแค่ subset ของข้อมูลที่คุณมีบน `origin` server ในตอนนี้ Git ก็จะไม่ fetch ข้อมูลอะไร แค่ตั้ง remote branch ชื่อ `teamone/master` ชี้ไปยัง commit ที่ `teamone` มีอยู่ใน `master` branch ของมัน (ดู Figure 3-26).
 
-Insert 18333fig0326.png 
+http://git-scm.com/figures/18333fig0326-tn.png
 Figure 3-26. You get a reference to teamone’s master branch position locally.
 
 ### การ Push ###
@@ -422,7 +422,7 @@ Figure 3-26. You get a reference to teamone’s master branch position locally.
 	To git@github.com:schacon/simplegit.git
 	 * [new branch]      serverfix -> serverfix
 
-อันนี้เป็น shortcut นิดส์ๆ โดย Git จะขยายชื่อ branch `serverfix` ออกเป็น `refs/heads/serverfix:refs/heads/serverfix` โดยอัตโนมัติ ซึ่งแปลว่า “เอา serverfix ที่เป็น local branch คนเครื่องฉันไป push ใส่ serverfix บน remote ให้ที” เด๋วเราค่อยมาว่ากันในรายละเอียดของส่วน `refs/heads/` ใน Chapter 9 ตอนนี้ทำเป็นลืมๆมันไปก่อน แน่นอนว่าคุณสามารถทำ `git push origin serverfix:serverfix` ก็ได้ เพราะมันจะได้ผลออกมาเหมือนกัน (เพราะมันแปลว่า “เอา serverfix ของฉันไปทำเป็น serverfix ของ remote ซะ”) คุณสามารถใช้ format เพื่อ push local branch ซักอันไปยัง remote branch ซึ่งมีชื่อต่างกันได้ ถ้าคุณไม่อยากให้มันมีชื่อว่า `serverfix` บน remote คุณก้ run `git push origin serverfix:awesomebranch` แทนเพื่อที่จะ push `serverfix` branch บนเครื่องไปเป็น `awesomebranch` branch บน remote project
+อันนี้เป็น shortcut นิดส์ๆ โดย Git จะขยายชื่อ branch `serverfix` ออกเป็น `refs/heads/serverfix:refs/heads/serverfix` โดยอัตโนมัติ ซึ่งแปลว่า “เอา serverfix ที่เป็น local branch บนเครื่องฉันไป push ใส่ serverfix บน remote ให้ที” เด๋วเราค่อยมาว่ากันในรายละเอียดของส่วน `refs/heads/` ใน Chapter 9 ตอนนี้ทำเป็นลืมๆมันไปก่อน แน่นอนว่าคุณสามารถทำ `git push origin serverfix:serverfix` ก็ได้ เพราะมันจะได้ผลออกมาเหมือนกัน (เพราะมันแปลว่า “เอา serverfix ของฉันไปทำเป็น serverfix ของ remote ซะ”) คุณสามารถใช้ format เพื่อ push local branch ซักอันไปยัง remote branch ซึ่งมีชื่อต่างกันได้ ถ้าคุณไม่อยากให้มันมีชื่อว่า `serverfix` บน remote คุณก็แค่ run `git push origin serverfix:awesomebranch` แทนเพื่อที่จะ push `serverfix` branch บนเครื่องไปเป็น `awesomebranch` branch บน remote project
 
 ครั้งต่อไปที่เพื่อนคุณซักคน fetch ของจาก server เค้าจะได้ reference อันนึงที่ชี้ไปยัง `serverfix` version บน server ในรูปแบบ remote branch ชื่อ `origin/serverfix`:
 
@@ -464,7 +464,7 @@ Figure 3-26. You get a reference to teamone’s master branch position locally.
 
 ### การลบ Remote Branches ###
 
-สมมติว่าคุณจะทิ้ง remote branch ยกตัวอย่างเช่น คุณและเพื่อนๆทำ feature อันนึงเสร็จและได้ merged มันเข้าไปยัง remote `master` branch (หรือ branch ลิงอะไรก็ช่างที่เอาไว้เก็บ code ที่ stable อ่ะ) คุณสามารถ delete remote branch ได้อย่างงงๆด้วยคำสั่ง `git push [remotename] :[branch]` สมมติว่าอยากจะลบ `serverfix` branch จาก server ก็ run คำสั่งดังนี้:
+สมมติว่าคุณจะทิ้ง remote branch ยกตัวอย่างเช่น คุณและเพื่อนๆทำ feature อันนึงเสร็จและได้ merged มันเข้าไปยัง remote `master` branch (หรือ branch ลิงค์อะไรก็ช่างที่เอาไว้เก็บ code ที่ stable อ่ะ) คุณสามารถ delete remote branch ได้อย่างงงๆด้วยคำสั่ง `git push [remotename] :[branch]` สมมติว่าอยากจะลบ `serverfix` branch จาก server ก็ run คำสั่งดังนี้:
 
 	$ git push origin :serverfix
 	To git@github.com:schacon/simplegit.git
@@ -480,12 +480,12 @@ Git มีสองวิธีหลักๆในการ integrate changes 
 
 ถ้าคุณย้อนกลับไปดูตัวอย่างก่อนหน้าใน section Merge (ดู Figure 3-27) คุณจะเห็นว่าคุณได้คุณได้แยกงานคุณออกมาและสร้าง commits บน 2 branches ที่แตกต่างกัน
 
-Insert 18333fig0327.png 
+http://git-scm.com/figures/18333fig0327-tn.png
 Figure 3-27. Your initial diverged commit history.
 
 วิธีที่ง่ายที่สุดที่จะ integrate มันเข้าด้วยกันคือการ `merge` (อย่างที่เห็นก่อนหน้านี้) มันจะทำการ merge สามทาง ระหว่าง snapshots ล่าสุดของทั้งสอง branch (C3 และ C4) และบรรพบุรุษล่าสุดที่ทั้งสอง branch share กัน (C2), สร้าง snapshot อันใหม่ (และ commit), ดัง Figure 3-28.
 
-Insert 18333fig0328.png 
+http://git-scm.com/figures/18333fig0328-tn.png
 Figure 3-28. Merging a branch to integrate the diverged work history.
 
 นอกจากนี้ยังมีอีกทาง นั่นคือไปเอา patch ของ change ที่เกิดขึ้นใน C3 แล้วเอามา apply บน C4 สำหรับ Git วิธีนี้เรียกว่า _rebasing_ ด้วย command `rebase` คุณสามารถเอา changes ที่ถูก committed บน branch นึงไป replay บนอีก branch ได้
@@ -499,15 +499,15 @@ Figure 3-28. Merging a branch to integrate the diverged work history.
 
 วิธีการทำงานของมันคือย้ายไปยังบรรพบุรุษที่แชร์กันระหว่างสอง branches (ระหว่างอันที่คุณกำลังอยู่และอันที่คุณจะ rebasing เข้าไป), หา diff (ความเปลี่ยนแปลง) ที่เกิดขึ้นในแต่ละ commit ของ branch ที่คุณกำลังอยู่, save diffs เหล่านั้นใส่ใน temporary files, reset branch ปัจจุบันให้เป็นเหมือน commit ของ branch ที่คุณกำลังจะ rebase ไป, และสุดท้าย apply แต่ละ change ตามลำดับ Figure 3-29 จะแสดงให้เห็นว่ามันดำเนินไปยังไง
 
-Insert 18333fig0329.png 
+http://git-scm.com/figures/18333fig0329-tn.png
 Figure 3-29. Rebasing the change introduced in C3 onto C4.
 
 ณ บัดนาว คุณสามารถกลับไปยัง master branch แล้วทำ fast-forward merge ได้ (ดังรูป Figure 3-30).
 
-Insert 18333fig0330.png 
+http://git-scm.com/figures/18333fig0330-tn.png
 Figure 3-30. Fast-forwarding the master branch.
 
-ตอนนี้ snapshot ที่ถูกชี้โดย C3' หน้าตาเหมือนกันกับอันที่ถูกชี้ว่า C5 ในตัวอย่างการ merge เป๊ะๆ ไม่มีความแตกต่างใดๆในผลของการ integrate แต่การ rebase ทำให้ history สะอาดกว่า ถ้าคุณลองดู log ของ branch ที่ถูก rebase มา จะเห็นว่า history มันเป็นเส้นตรงราวกับว่างานทั้งหมดเกิดขึ้นตามลำดับแม้ว่าตอนแรกมันจะเกิดขึ้นควบคู่กันก็ตาม
+ตอนนี้ snapshot ที่ถูกชี้โดย C3 หน้าตาเหมือนกันกับอันที่ถูกชี้ว่า C5 ในตัวอย่างการ merge เป๊ะๆ ไม่มีความแตกต่างใดๆในผลของการ integrate แต่การ rebase ทำให้ history สะอาดกว่า ถ้าคุณลองดู log ของ branch ที่ถูก rebase มา จะเห็นว่า history มันเป็นเส้นตรงราวกับว่างานทั้งหมดเกิดขึ้นตามลำดับแม้ว่าตอนแรกมันจะเกิดขึ้นควบคู่กันก็ตาม
 
 บ่อยครั้ง คุณจะเลือก rebase เพื่อให้ commits เรียงกันอย่างสวยงามส์บน remote branch ยกตัวอย่างเช่นใน project ที่คุณเข้าไปแจมแต่ไม่ได้ maintain เอง กรณีแบบนี้ คุณจะทำงานของคุณบน branch ซักอัน แล้ว rebase งานของคุณไปยัง `origin/master` เวลาที่คุณพร้อมจะ submit patches ของคุณลงบน main project ด้วยวิธีนี้ คนที่ maintain ก็ไม่ต้องทำการ integration ใดๆ แค่ fast-forward หรือ apply cleanๆ
 
@@ -517,7 +517,7 @@ Figure 3-30. Fast-forwarding the master branch.
 
 คุณสามารถให้ rebase ของคุณ replay บนอย่างอื่นนอกจาก rebase branch ได้ด้วยนะ สมมติ history หน้าตาเหมือน Figure 3-31 คุณแตก topic branch ชื่อ (`server`) เพื่อเพิ่ม functionality บางอย่างบน server-side ของ project คุณ แล้วคุณก็ commit หลังจากนั้น, คุณแตก branch ออกไปอีกเพื่อทำ changes สำหรับ client-side (ชื่อ `client`) แล้วก็ commit อีกไม่กี่ที สุดท้าย คุณกลับมาที่ server branch ของคุณแล้ว commit ไปอีก 2-3 ที
 
-Insert 18333fig0331.png 
+http://git-scm.com/figures/18333fig0331-tn.png
 Figure 3-31. A history with a topic branch off another topic branch.
 
 สมมติว่าคุณตัดสินใจที่จะ merge changes ของ client-side เข้าไปใน mainline เพื่อที่จะ release, แต่คุณดันอยากเก็บ changes ของ server-side เอาไว้ก่อนจนกว่ามันจะโดน tested อีกซักหน่อย คุณสามารถเอา changes บน client ที่ไม่อยู่บน server (C8 และ C9) แล้ว reply มันบน master branch ได้โดยใช้ option `--onto` ของ `git rebase`:
@@ -526,7 +526,7 @@ Figure 3-31. A history with a topic branch off another topic branch.
 
 ซึ่งเป็นการบอกว่า, “check out client branch ซะ, แล้วหา patches จากบรรพบุรุษที่แชร์กันระหว่าง branch `client` กับ `server`, แล้ว replay มันไปบน `master`” ถึงจะฟังดูงงๆ แต่ผลลัพธ์ (ดังรูป Figure 3-32) ค่อนข้างแหล่มทีเดียว
 
-Insert 18333fig0332.png 
+http://git-scm.com/figures/18333fig0332-tn.png 
 Figure 3-32. Rebasing a topic branch off another topic branch.
 
 คราวนี้คุณก็ fast-forward master branch ของคุณ (ดังรูป Figure 3-33):
@@ -534,7 +534,7 @@ Figure 3-32. Rebasing a topic branch off another topic branch.
 	$ git checkout master
 	$ git merge client
 
-Insert 18333fig0333.png 
+http://git-scm.com/figures/18333fig0333-tn.png
 Figure 3-33. Fast-forwarding your master branch to include the client branch changes.
 
 ทีนี้สมมติว่าคุณตัดสินใจที่จะ pull server branch เข้ามาด้วยเช่นกัน คุณก็ rebase server branch ไปบน the master branch โดยไม่ต้อง check out มันออกมาเลยโดยการ run `git rebase [basebranch] [topicbranch]` ซึ่งจะทำการ check out topic branch (ซึ่งในกรณีนี้ชื่อ `server`) ให้คุณ แล้ว replay มันไปบน base branch (`master`):
@@ -543,7 +543,7 @@ Figure 3-33. Fast-forwarding your master branch to include the client branch cha
 
 การทำแบบนี้จะ replays งานใน `server` ลงบนงานใน `master` ดัง Figure 3-34.
 
-Insert 18333fig0334.png 
+http://git-scm.com/figures/18333fig0334-tn.png
 Figure 3-34. Rebasing your server branch on top of your master branch.
 
 หลังจากนั้นคุณก็ fast-forward branch หลัก (`master`):
@@ -556,7 +556,7 @@ Figure 3-34. Rebasing your server branch on top of your master branch.
 	$ git branch -d client
 	$ git branch -d server
 
-Insert 18333fig0335.png 
+http://git-scm.com/figures/18333fig0335-tn.png
 Figure 3-35. Final commit history.
 
 ### ภยันตรายของการ Rebase ###
@@ -571,22 +571,22 @@ Figure 3-35. Final commit history.
 
 ลองดูตัวอย่างกันว่าการ rebase งานที่เคยเปิดให้เป็น public แล้วมันเกิดปัญหายังไง สมมติว่าคุณ clone จาก server กลางซักตัวแล้วทำงานไปบนนั้น history ของ commits ก็จะหน้าตาประมาณ Figure 3-36.
 
-Insert 18333fig0336.png 
+http://git-scm.com/figures/18333fig0336-tn.png
 Figure 3-36. Clone a repository, and base some work on it.
 
 ทีนี้, ใครอีกคนก็ทำงานต่อแล้วก็ merge เข้ามา, แล้วก็ pushes งานนั้นเข้า server กลาง คุณก็ fetch งานพวกนั้นเข้ามาแล้วก็ merge remote branch อันใหม่เข้ามากับงานของคุณ, ทำให้ history ของคุณหน้าตาประมาณ Figure 3-37.
 
-Insert 18333fig0337.png 
+http://git-scm.com/figures/18333fig0337-tn.png
 Figure 3-37. Fetch more commits, and merge them into your work.
 
 หลังจากนั้น, ไอ้หมอนั่นที่ pushed งานที่ถูก merged ขึ้นมาก็ตัดสินใจที่จะย้อนกลับไปแล้ว rebase งานของมันแทน ซึ่งไอ้หมดนั่นก็จะสั่ง `git push --force` เพื่อทับ history บน server หลังจากนั้นคุณก็ fetch ของมาจาก server แล้วก็ได้ commits ใหม่ติดมา
 
-Insert 18333fig0338.png 
+http://git-scm.com/figures/18333fig0338-tn.png
 Figure 3-38. Someone pushes rebased commits, abandoning commits you’ve based your work on.
 
 ณ จุดนี้ คุณต้อง merge งานนี้เข้ามาใหม่อีกที แม้ว่าจะเคยทำไปทีนึงแล้วก็ตาม การ Rebase แก้ไขไอ้ SHA-1 hashes ของ commits เหล่านี้ทำให้ Git มองมันเป็นเหมือน commits ใหม่, ทั้งๆที่จริงๆแล้วคุณมีงานใน C4 อยู่ใน history ของคุณอยู่แล้ว (ดู Figure 3-39).
 
-Insert 18333fig0339.png 
+http://git-scm.com/figures/18333fig0339-tn.png
 Figure 3-39. You merge in the same work again into a new merge commit.
 
 ยังไงคุณจะต้อง merge ได้งานใหม่นี่เข้ามาซักวันแหละเพื่อจะได้ update code ตามเพื่อนๆได้ ซึ่งหลังจากทำแล้ว commit history ของคุณจะมีทั้ง commits C4 และ C4' ซึ่งมี SHA-1 hashes ต่างกันแต่เป็นงานเดียวกันและมี commit message เหมือนกัน ถ้าคุณ run `git log` ตอนที่ history คุณเป็นแบบนี้ คุณจะเห็นสอง commits ที่มี author date และ message เหมือนกันเป๊ะ แล้วมันจะชวนมึนมาก ยิ่งกว่านั้นคือถ้าคุณ push history นี้กลับไปยัง server คุณจะยัดพวก commits ที่ถูก rebased มาซ้ำเข้าไปที่ server กลาง ซึ่งจะไปทำให้คนอื่นๆมึนกันต่อ
