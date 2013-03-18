@@ -507,7 +507,7 @@ Figure 3-29. Rebasing the change introduced in C3 onto C4.
 http://git-scm.com/figures/18333fig0330-tn.png
 Figure 3-30. Fast-forwarding the master branch.
 
-ตอนนี้ snapshot ที่ถูกชี้โดย C3 หน้าตาเหมือนกันกับอันที่ถูกชี้ว่า C5 ในตัวอย่างการ merge เป๊ะๆ ไม่มีความแตกต่างใดๆในผลของการ integrate แต่การ rebase ทำให้ history สะอาดกว่า ถ้าคุณลองดู log ของ branch ที่ถูก rebase มา จะเห็นว่า history มันเป็นเส้นตรงราวกับว่างานทั้งหมดเกิดขึ้นตามลำดับแม้ว่าตอนแรกมันจะเกิดขึ้นควบคู่กันก็ตาม
+ตอนนี้ snapshot ที่ถูกชี้โดย C3' หน้าตาเหมือนกันกับอันที่ถูกชี้ว่า C5 ในตัวอย่างการ merge เป๊ะๆ ไม่มีความแตกต่างใดๆในผลของการ integrate แต่การ rebase ทำให้ history สะอาดกว่า ถ้าคุณลองดู log ของ branch ที่ถูก rebase มา จะเห็นว่า history มันเป็นเส้นตรงราวกับว่างานทั้งหมดเกิดขึ้นตามลำดับแม้ว่าตอนแรกมันจะเกิดขึ้นควบคู่กันก็ตาม
 
 บ่อยครั้ง คุณจะเลือก rebase เพื่อให้ commits เรียงกันอย่างสวยงามส์บน remote branch ยกตัวอย่างเช่นใน project ที่คุณเข้าไปแจมแต่ไม่ได้ maintain เอง กรณีแบบนี้ คุณจะทำงานของคุณบน branch ซักอัน แล้ว rebase งานของคุณไปยัง `origin/master` เวลาที่คุณพร้อมจะ submit patches ของคุณลงบน main project ด้วยวิธีนี้ คนที่ maintain ก็ไม่ต้องทำการ integration ใดๆ แค่ fast-forward หรือ apply cleanๆ
 
