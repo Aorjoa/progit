@@ -14,7 +14,7 @@
 
 	$ git init
 
-เจ้าจะได้ directory ย่อยออกมาชื่อว่า '.git' ซึ่งในนี้จะเป็นไฟล์ที่จำเป็นต้องมีเพื่อใช้อธิบายยุ้งฉางของเจ้า เช่นบ่งบอกว่าใครเป็นเจ้าของ แต่มันยังจะไม่ถูกติดตาม track ในตอนนี้ (ดูคำอธิบายไฟล์เหล่านี้ได้ในบทที่ 9)
+คำสั่งนี้จะบอกถึงการเริ่มต้นสร้างยุ้งฉาง และเจ้าจะได้ directory ย่อยออกมาชื่อว่า '.git' ซึ่งในนี้จะเป็นไฟล์ที่จำเป็นต้องมีเพื่อใช้อธิบายยุ้งฉางของเจ้า เช่นบ่งบอกว่าใครเป็นเจ้าของ แต่มันยังจะไม่ถูกติดตาม track ในตอนนี้ (ดูคำอธิบายไฟล์เหล่านี้ได้ในบทที่ 9)
 
 
 If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a commit:
