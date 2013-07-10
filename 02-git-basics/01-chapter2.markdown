@@ -1,18 +1,21 @@
-# Git Basics #
+# วรยุทธขั้นพื้นฐาน #
 
-If you can read only one chapter to get going with Git, this is it. This chapter covers every basic command you need to do the vast majority of the things you’ll eventually spend your time doing with Git. By the end of the chapter, you should be able to configure and initialize a repository, begin and stop tracking files, and stage and commit changes. We’ll also show you how to set up Git to ignore certain files and file patterns, how to undo mistakes quickly and easily, how to browse the history of your project and view changes between commits, and how to push and pull from remote repositories.
+เนื้อความวรยุทธในชั้นนี้จะบอกคำสั่งพื้นฐาน การตั้งค่า และเริ่มต้นโปรเจก ที่สหายร่วมสงครามพึงมี รวมถึงการติดตามไฟล์ต่างๆ เพื่อดู stage, การ commit change การข้ามไฟล์,การตรวจสอบ pattern ไฟล์ รวมไปถึงการ Push และ Pull ข้อมูลจากหน่วยเหนือ
 
-## Getting a Git Repository ##
+## ได้มาซึ่งยุ้งฉางข้อมูล ##
 
-You can get a Git project using two main approaches. The first takes an existing project or directory and imports it into Git. The second clones an existing Git repository from another server.
+ช้าก่อนจอมยุทธ ก่อนที่ท่านจักทำการศึกใดๆ ได้ท่านต้องมียุ้งฉางวัตถุดิบ ในกรณีนี้คือยุ้งฉางข้อมูล (Repository) ซึ่งการได้มานั้นทำได้ใน 2 ทางคือ
+1) จากการตั้งยุ้งฉางข้อมูลขึ้นจากน้ำพักน้ำแรงของตน Initial repository
+2) จากการขอสหายสงครามท่านอื่น Clone repository
 
-### Initializing a Repository in an Existing Directory ###
+### การตั้งยุ้งฉางของตนเอง ###
 
-If you’re starting to track an existing project in Git, you need to go to the project’s directory and type
+ถ้าเจ้าเริ่มทำ Git จากโปรเจกที่มีอยู่แล้ว หรือ directory ในเครื่องเจ้า เจ้าต้องไปที่ตำแหน่งโปรเจกนั้น หรือ directory นั้น เช่น ~/User/Git_Another/Git_init_folder/ แล้วพิมพ์
 
 	$ git init
 
-This creates a new subdirectory named .git that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. (See Chapter 9 for more information about exactly what files are contained in the `.git` directory you just created.)
+เจ้าจะได้ directory ย่อยออกมาชื่อว่า '.git' ซึ่งในนี้จะเป็นไฟล์ที่จำเป็นต้องมีเพื่อใช้อธิบายยุ้งฉางของเจ้า เช่นบ่งบอกว่าใครเป็นเจ้าของ แต่มันยังจะไม่ถูกติดตาม track ในตอนนี้ (ดูคำอธิบายไฟล์เหล่านี้ได้ในบทที่ 9)
+
 
 If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a commit:
 
